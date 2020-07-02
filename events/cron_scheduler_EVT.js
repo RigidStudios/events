@@ -100,7 +100,7 @@ mod: function(DBM) {
                 if(!DBM.Cron_Scheduler.isValidTimeZone(timeZone)) return console.log(`[Cron Scheduler] Invalid Timezone for '${eventName}': '${timeZone}'`);
           
                 const job = cron.schedule(cronString, () =>{
-                    const servers = Bot.bot.guilds.array();
+                    const servers = Bot.bot.guilds.cache.array();
                     for(const server of servers) {
                         if(server) {
                             Actions.invokeEvent(event, server, {});
